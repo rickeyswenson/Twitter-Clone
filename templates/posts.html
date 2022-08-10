@@ -19,7 +19,7 @@
             {% csrf_token %}
             <input type="text" name="name" placeholder="Your Name" required>
             <textarea name="body" placeholder="What's Happening?" required></textarea>
-            <input type="file" id="myFile" name="filename">
+            <input type="file" id="myFile" name="image">
             <input type="submit" value="Tweet" class="tweet">
         </form>
     </section>
@@ -40,9 +40,8 @@
                     <div class="name">{{ post.name }}</div>
                     <div class="datetime">{{ post.created_at }}</div>
                     <p>{{ post.body  }}</p>
-                    {% if post.image.url %}
-                    <img src="{{post.image.url}}" style="width=50%"/>
-                    {%endif%}
+                    <img src="{{post.image.url}}" alt="" style="width=50%"/>
+                    
                     <form id = "likes-form" action="{% url 'like_post' post.pk %}" method= 'POST'>
                         {% csrf_token %}
                     <div class="like-button" data-tweet-id="411">

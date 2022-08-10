@@ -181,9 +181,14 @@ button.likecount-btn {
     /* padding: 1%; */
 }
 img {
-    
+    width: 55%;
+    border-radius: 10px;
+}
+
+.heart{
     width: 10%;
 }
+
 input.name-input {
     width: 60%;
     background-color: skyblue;
