@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<section class="content">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <div class="header">
+        <img src="{% static 'img/twitter.png' %}" class="logo">
+        <h1>Twitter</h1>
+    </div>
+    <section class="post_form">
+        <div class="logo">
+            <img src="{% static 'img/profilepicture.jpg' %}">
+        </div>
+        <form class="input" action="" method="POST" enctype= "multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="body" placeholder="What's Happening?" required></textarea>
+            <input type="file" id="myFile" name="filename">
+            <input type="submit" value="Tweet" class="tweet">
+        </form>
+    </section>
+    <section class="posts">
+        <ul>
+            {% for post in posts %}
+            <li> 
+                <img class="menu_icon js-menu-icon" src="{% static 'img/menu.png' %}">
+                <div class='menu'>
+                    <a href="/delete/{{ post.id }}/">Delete</a><br>
+                    <a href="/edit/{{post.id}}">Edit</a>
+
+                </div>
+                <div class="logo">
+                    <img src="{% static 'img/profilepicture.jpg' %}">
+                </div>
+                <div class="name_body">
+                    <div class="name">{{ post.name }}</div>
+                    <div class="datetime">{{ post.created_at }}</div>
+                    <p>{{ post.body  }}</p>
+                    {% if post.image.url %}
+                    <img src="{{post.image.url}}" style="width=50%"/>
+                    {%endif%}
+                    <form id = "likes-form" action="{% url 'like_post' post.pk %}" method= 'POST'>
+                        {% csrf_token %}
+                    <div class="like-button" data-tweet-id="411">
+                    
+                        <button class='likecount-btn'  type= 'submit' name = "post_id" value="{{post.id}}"> <img class="heart" src="{% static 'img/heart.png' %}"  >{{post.likes}}</button>
+                        {% comment %} <div class="like-count js-like-count">}</div> {% endcomment %}
+                    </div>
+                </form>
+                    
+                </div>
+                
+
+
+            </li>
+            {% endfor %} 
+        </ul>
+    </section>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/posts.js' %}"></script>
+</section>
+
+
+
+
+
+
+{% endblock %}

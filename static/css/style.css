@@ -1,0 +1,191 @@
+/*
+common
+*********************************/
+html, body {
+    height: 100%;
+    text-align: left;
+    background-color: black;
+    color: white;
+
+}
+
+.content {
+    max-width: 600px;
+    height: 100px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+/*
+Post
+*********************************/
+.post_form {
+    padding: 20px 40px;
+    border: 1px solid #ccc;
+    display: flex;
+    padding: 10px;
+    background-color: black;
+    border-radius: 15px;
+    
+
+}
+
+.post_form input {
+    border: 1px solid #ccc;
+    width: 90%;
+    background: black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 15px;
+    color: white;
+  
+}
+
+.post_form input.tweet {
+    width:60px;
+    position: relative;
+    right: -400px;
+    background-color: #1d9bf0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.post_form div.logo {
+    width: 40px;
+    padding-right:  20px;
+}
+
+.post_form textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 90%;
+    height: 100px;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    border-radius: 15px;
+    color: white;
+}
+
+.posts ul {
+    padding: 0;
+}
+
+.posts li .menu_icon {
+    width: 20px;
+    position: absolute;
+    top: 18px;
+    right: 30px;
+}
+
+.posts li { 
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 17px;
+    list-style: none;
+    position: relative;
+    border-radius: 15px;
+}
+
+.posts li .menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    border: 1px solid #ccc;
+    background-color: #1d9bf0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 15px;
+}
+
+.posts li .menu a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+
+.posts li .logo {
+    flex-basis: 15%;
+
+}
+
+.posts li .logo img {
+    width: 50%;
+    border-radius: 50%;
+
+}
+
+.post_form .logo img {
+    width: 100%;
+    border-radius: 50%;
+    position: left absolute;
+
+}
+
+
+.posts li .name_body {
+    flex-basis: 85%;
+
+}
+.posts li div.name {
+    font-size: 25px;
+}
+.posts li .name_body {
+    font-weight: bold;
+}
+
+.posts li .name_body .datetime {
+    color: #1d9bf0;
+    font-size: 75%;
+
+}
+
+@media screen and (max-width: 500px) {
+    .posts li .name_body .name {
+        font-size: 20px;
+    }
+}
+
+
+/*
+Twitter Related things 
+*/
+.header {
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color:#1d9bf0;
+
+
+}
+
+.header .logo {
+    width: 30px;
+    margin-right: 20px;
+}
+button.likecount-btn {
+    border: none;
+    background: none;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60%;
+    /* padding: 1%; */
+}
+img {
+    
+    width: 10%;
+}
+input.name-input {
+    width: 60%;
+    background-color: skyblue;
+    border-radius: 20px;
+}
