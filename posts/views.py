@@ -3,8 +3,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
-from django.urls import reverse_lazy, reverse
-from cloudinary.forms import cl_init_js_callbacks
 
 def index(request):
     #if the method is POST
@@ -26,8 +24,8 @@ def index(request):
 
 
     #get all posts limit 20
-    posts = Post.objects.all().order_by("-created_at")
-
+    posts = Post.objects.all().order_by("-created_at")[:20]
+    form = PostForm
     #Show
     return render(request, 'posts.html', {'posts': posts})
 
@@ -47,12 +45,15 @@ def LikeView(request,post_id):
     return HttpResponseRedirect('/')
 
 def edit(request,post_id):
-    post = Post.objects.get(id=post_id)
+    if request.method == "GET":
+        posts = Post.objects.get(id=post_id)
+        return render(request,'edit.html',{'posts':posts})
     if request.method == 'POST':
-        form= PostForm(request.POST, request.FILES, instance=post)
+        editposts = Post.objects.get(id=id)
+        form= PostForm(request.POST, request.FILES, instance=editposts)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
-    else:
-        form=PostForm(PostForm)
-        return render(request,'edit.html',{'post':post,'form':form})
+        else:
+            return HttpResponse("not valid")
+        
