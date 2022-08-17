@@ -49,7 +49,7 @@ def edit(request,post_id):
         posts = Post.objects.get(id=post_id)
         return render(request,'edit.html',{'posts':posts})
     if request.method == 'POST':
-        editposts = Post.objects.get(id=id)
+        editposts = Post.objects.get(id=post_id)
         form= PostForm(request.POST, request.FILES, instance=editposts)
         if form.is_valid():
             form.save()
