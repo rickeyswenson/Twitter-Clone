@@ -47,7 +47,7 @@ def LikeView(request,post_id):
 def edit(request,post_id):
     if request.method == "GET":
         posts = Post.objects.get(id=post_id)
-        return render(request,'edit.html',{'posts':posts})
+        return render(request,'edit1.html',{'posts':posts})
     if request.method == 'POST':
         editposts = Post.objects.get(id=post_id)
         form= PostForm(request.POST, request.FILES, instance=editposts)

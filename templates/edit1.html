@@ -1,0 +1,53 @@
+{% extends "base.html"%} {% block content %} {% load static %}
+<section class="content">
+    <div class="header">
+        <img src="{% static 'img/twitter.png' %}" class="logo" />
+        <h1>Edit</h1>
+    </div>
+  <section class="post_form">
+    <form
+      action="/edit/{{posts.id}}/"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <input
+        class="name-input"
+        type="text"
+        name="name"
+        placeholder="Name"
+        value="{{ posts.name }}"
+        required
+      /><br />
+      <textarea
+        class="txta"
+        name="body"
+        placeholder="What’s Happening?"
+        required
+      >
+{{ posts.body }}</textarea
+      ><br />
+      <label for="{{posts.name}}"></label>
+      <input class="name-input" type="file" name="image" /><br />
+      <img src="{{posts.image.url}}" alt="" style="width: 50%" />
+      <div class="update-edit-buttons">
+        <a class="cancel-anchor" href="/">
+          <input
+            class="cancel-button"
+            type="button"
+            id="delete"
+            value="Cancel"
+          /> </a
+        ><br />
+        <input id="update-button" type="submit" value="Update" />
+      </div>
+    </form>
+  </section>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <script src="{% static 'js/posts.js' %}"></script>
+</section>
+{% endblock %}
